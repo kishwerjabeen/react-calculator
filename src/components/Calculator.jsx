@@ -17,7 +17,18 @@ const Calculator = () => {
     const calculate = () => {
         setResult(eval(result).toString());
     }
+    // BACK BUTTON 
 
+    const back = () => {
+        setResult(result.slice(0, -1))
+    }
+    // PERCENTAGE BUTTON
+    const calculatePercentage = () => {
+        const inputValue = parseFloat(result);
+        if (!isNaN(inputValue)) {
+            setResult((inputValue / 100).toString());
+        }
+    }
     return (
         <div className="bg-gray-800 text-white w-screen h-screen flex justify-center items-center">
 
@@ -44,9 +55,9 @@ const Calculator = () => {
                     <div className='flex justify-between m-2'>
                         <input onClick={clearScreen} type="button" value="C" className="bg-red-300 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
 
-                        <input onClickCapture={clickHandle} type="button" value="<" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
+                        <input onClick={back} type="button" value="<" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
 
-                        <input onClickCapture={clickHandle} type="button" value="%" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
+                        <input onClick={calculatePercentage} type="button" value="%" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
 
                         <input onClickCapture={clickHandle} type="button" value="/" className="bg-pink-300 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
                     </div>
