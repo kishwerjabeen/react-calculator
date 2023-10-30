@@ -1,6 +1,15 @@
 import React from 'react'
+import { useState } from 'react'
 
 const Calculator = () => {
+    const [result, setResult] = useState('');
+
+    // e means event 
+    const clickHandle = (e) => {
+        // concat asliya karhy ha taky jo bhi value enter ho contact hojye ike 456
+        setResult(result.concat(e.target.value));
+    }
+
     return (
         <div className="bg-gray-800 text-white w-screen h-screen flex justify-center items-center">
 
@@ -9,7 +18,10 @@ const Calculator = () => {
 
                 {/* screen */}
                 <div className="screen p-2">
-                    <input type="text" className='text-black w-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] placeholder-black px-1 bg-gray-100 text-2xl outline-none pt-10  rounded-lg text-right ' placeholder="0">
+                    <input type="text"
+                    // fr display
+                        value={result}
+                        className='text-black w-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] placeholder-black px-1 bg-gray-100 text-2xl outline-none pt-10  rounded-lg text-right ' placeholder="0">
 
                     </input>
                 </div>
@@ -48,7 +60,7 @@ const Calculator = () => {
 
                     {/* fourth line  */}
                     <div className="m-2 flex justify-between">
-                        <input type="button" value="1" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
+                        <input type="button" onClick={clickHandle} value="1" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
                         <input type="button" value="2" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
                         <input type="button" value="3" className="bg-gray-200 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
                         <input type="button" value="+" className="bg-purple-300 shadow-md rounded-lg w-12 h-12 text-center text-black font-medium flex justify-center items-center outline-none" />
